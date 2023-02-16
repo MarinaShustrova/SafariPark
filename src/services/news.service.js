@@ -1,216 +1,116 @@
-/* eslint-disable class-methods-use-this */
 const db = require('../db/models');
-const { sequelize } = require('../db/models');
 
-class CategoriesService {
-  async findAllCategories() {
-    let categories;
+class NewsService {
+  static async findAllNews() {
+    let news;
 
     try {
-      categories = await db.Category.findAll({ raw: true });
+      news = await db.News.findAll({
+        order: [['id', 'DESC']],
+      });
     } catch (error) {
       console.error(error);
-
-      return { message: 'Не удалось найти все категории.' };
+      return { message: 'Не удалось найти все новости.' };
     }
+    news = news.map((el) => {
+      el.content = `${el.content.substring(0, 140)}...`;
+      return el;
+    });
 
-    return categories;
+    return news;
   }
 
-  async createNewCategory({ title }) {
-    let category;
+  static async findLastNews() {
+    let news;
 
     try {
-      category = await db.Category.create({
+      news = await db.News.findAll({
+        raw: true,
+        order: [['createdAt', 'DESC']],
+        limit: 1,
+      });
+    } catch (error) {
+      return { message: 'Не удалось найти все новости.' };
+    }
+    const [lastNews] = news;
+    lastNews.content = `${lastNews.content.substring(0, 140)}...`;
+    return news;
+  }
+
+  async createNews({
+    title,
+    content,
+    image,
+    adminId = 6, // не забыть убрать
+  }) {
+    try {
+      const news = await db.News.create({
         title,
-      });
-    } catch (error) {
-      console.error(error);
-
-      return { message: 'Не удалось создать категорию.' };
-    }
-
-    return category;
-  }
-
-  async findCategoryById(id) {
-    let category;
-
-    try {
-      category = await db.Category.findOne({
-        where: {
-          id,
-        },
-      });
-    } catch (error) {
-      console.error(error);
-
-      return { message: 'Не удалось найти категорию.' };
-    }
-
-    return category;
-  }
-
-  async editCategoryById({ id, title }) {
-    let category;
-
-    try {
-      category = await db.Category.update(
-        {
-          title,
-        },
-        {
-          where: {
-            id,
-          },
-        },
-      );
-    } catch (error) {
-      console.error(error);
-
-      return { message: 'Не удалось отредактировать категорию.' };
-    }
-
-    return category;
-  }
-
-  async deleteCategoryById(id) {
-    try {
-      await db.Category.destroy({
-        where: {
-          id,
-        },
-      });
-    } catch (error) {
-      console.error(error);
-
-      return { message: 'Не удалось удалить категорию.' };
-    }
-
-    return { message: 'Категория удалена.' };
-  }
-
-  async findAllAnimalsByCategoryId(categoryId) {
-    let animals;
-    try {
-      animals = await db.Animal.findAll({
-        attributes: [
-          'id',
-          'name',
-          'description',
-          'image',
-          'categoryId',
-          [sequelize.literal('"Category"."title"'), 'title'],
-        ],
-        where: { categoryId },
-        include: { model: db.Category },
-        order: [['id', 'ASC']],
-        raw: true,
-      });
-    } catch (error) {
-      console.error(error);
-      return { message: 'Не удалось найти животных по ID категории.' };
-    }
-    return animals;
-  }
-
-  async createAnimal({ name, description, image, categoryId }) {
-    let animals;
-    try {
-      animals = await db.Animal.create({
-        name,
-        description,
+        content,
         image,
-        categoryId,
+        adminId,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       });
+
+      return news;
     } catch (error) {
       console.error(error);
 
-      return { message: 'Не удалось записать зверюшку в БД.' };
+      return { message: 'Не удалось создать новость.' };
     }
-
-    return animals;
   }
 
-  async findAnimalById(animalId) {
-    let animal;
-    try {
-      animal = await db.Animal.findOne({
-        where: { id: animalId },
-        include: { model: db.Category },
-        raw: true,
-      });
-      const category = animal['Category.title'];
-      animal.category = category;
-    } catch (error) {
-      console.error(error);
-      return { message: 'Не удалось вычислить зверюшку по ID.' };
-    }
-    return animal;
-  }
+  static async findNewsById(id) {
+    let news;
 
-  async findAnimalPhotos(animalId) {
-    let animalPhotos;
     try {
-      animalPhotos = await db.Photo.findAll({
-        where: { animalId },
-        raw: true,
-      });
-      console.log(1, animalPhotos);
-    } catch (error) {
-      console.error(error);
-    }
-    return animalPhotos || [];
-  }
-
-  async deleteAnimalById(id) {
-    try {
-      await db.Animal.destroy({
+      news = await db.News.findAll({
         where: {
           id,
         },
+        raw: true,
       });
     } catch (error) {
       console.error(error);
-      return { message: 'Не удалось удалить зверюшку.' };
+      return { message: 'Не удалось найти новость.' };
     }
 
-    return { message: 'Зверюшка удалена.' };
+    return news;
   }
 
-  async addPhoto(animalData) {
-    const { image: photoUrl, animalId } = animalData;
-    let newImage;
-    try {
-      newImage = await db.Photo.create({ photoUrl, animalId });
-    } catch (error) {
-      console.error(error);
-      return { message: 'Не удалось добавить фото' };
-    }
-    return newImage;
-  }
-
-  async editAnimal(animalData) {
-    const { name, image, description, animalId } = animalData;
-    let newImage;
+  async editNews(newsData, id) {
+    const { title, image, content } = newsData;
+    let news;
     try {
       if (image) {
-        newImage = await db.Animal.update(
-          { name, image, description },
-          { where: { id: animalId } },
-        );
-      } else {
-        newImage = await db.Animal.update(
-          { name, description },
-          { where: { id: animalId } },
+        news = await db.News.update(
+          { title, image, content },
+          { where: { id } },
         );
       }
+      news = await db.News.update({ title, content }, { where: { id } });
     } catch (error) {
       console.error(error);
       return { message: 'Не удалось обновить зверя' };
     }
-    return newImage;
+    return news;
+  }
+
+  async deleteNewsById(id) {
+    try {
+      await db.News.destroy({
+        where: {
+          id,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+      return { message: 'Не удалось удалить новость.' };
+    }
+
+    return { message: 'Новость удалена.' };
   }
 }
 
-module.exports = CategoriesService;
+module.exports = NewsService;

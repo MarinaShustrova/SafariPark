@@ -25,6 +25,10 @@ module.exports = {
           isNumeric: true,
         },
       },
+      image: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
     });
   },
   down: async (queryInterface) => {

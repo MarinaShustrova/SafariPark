@@ -114,7 +114,9 @@ class CategoriesService {
     return animals;
   }
 
-  async createAnimal({ name, description, image, categoryId }) {
+  async createAnimal({
+    name, description, image, categoryId,
+  }) {
     let animals;
     try {
       animals = await db.Animal.create({
@@ -191,7 +193,9 @@ class CategoriesService {
   }
 
   async editAnimal(animalData) {
-    const { name, image, description, animalId } = animalData;
+    const {
+      name, image, description, animalId,
+    } = animalData;
     let newImage;
     try {
       if (image) {

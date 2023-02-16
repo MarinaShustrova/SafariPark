@@ -12,18 +12,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    description:{
+    description: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    condition:{
+    condition: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
     price: {
       type: DataTypes.FLOAT,
       allowNull: false,
-    }
+    },
+    imgage: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Tariff',

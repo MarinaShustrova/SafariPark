@@ -2,9 +2,9 @@
   "development": {
     "username": "marinaaverchenkova",
     "password": 123,
-    "database": "animal_shop",
+    "database": "safariDB",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",

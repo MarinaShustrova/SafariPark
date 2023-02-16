@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const TariffsController = require('../controllers/tariffs.controller');
+const TariffsController = require('../controllers/tariff.controller');
 const upload = require('../middlewares/uploadFile.middleware');
 
 const tariffsController = new TariffsController();
