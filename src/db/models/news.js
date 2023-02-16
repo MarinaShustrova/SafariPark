@@ -1,32 +1,40 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Tariff extends Model {
-    static associate(models) {
+  class News extends Model {
+    static associate({ Admin }) {
+      this.belongsTo(Admin, { foreignKey: 'adminId', onDelete: 'CASCADE' });
     }
   }
-  Tariff.init({
+  News.init({
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    description:{
+    content: {
+
       type: DataTypes.TEXT,
       allowNull: false,
+
     },
-    condition:{
+    image: {
+
       type: DataTypes.TEXT,
       allowNull: false,
+
     },
-    price: {
-      type: DataTypes.FLOAT,
+    adminId:
+    {
+
+      type: DataTypes.INTEGER,
       allowNull: false,
-    }
+
+    },
   }, {
     sequelize,
-    modelName: 'Tariff',
+    modelName: 'News',
   });
-  return Tariff;
+  return News;
 };

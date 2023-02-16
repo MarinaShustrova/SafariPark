@@ -1,27 +1,47 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Admin extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+    static associate({ News }) {
+      this.hasMany(News, { foreignKey: 'adminId' });
     }
   }
-  Admin.init({
-    firstName: DataTypes.TEXT,
-    lastName: DataTypes.TEXT,
-    email: DataTypes.TEXT,
-    password: DataTypes.TEXT,
-    isSuperAdmin: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'Admin',
-  });
+  Admin.init(
+    {
+      firstName: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      lastName: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+      },
+      password: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          len: [6, 10],
+        },
+      },
+      isSuperAdmin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      timestamps: false,
+      modelName: 'Admin',
+    },
+  );
   return Admin;
 };

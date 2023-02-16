@@ -1,40 +1,33 @@
-'use strict';
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Tariffs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       condition: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       price: {
-        type: Sequelize.FLOAT
-      },
-      image: {
-        type: Sequelize.TEXT
-      },
-      createdAt: {
+        type: Sequelize.FLOAT,
         allowNull: false,
-        type: Sequelize.DATE
+        validate: {
+          isNumeric: true,
+        },
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface) => {
     await queryInterface.dropTable('Tariffs');
-  }
+  },
 };

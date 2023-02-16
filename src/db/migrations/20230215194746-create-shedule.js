@@ -1,37 +1,31 @@
-'use strict';
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Shedules', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Schedules', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       weekdaysOpening: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
+        allowNull: false,
       },
       weekdaysClosing: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
+        allowNull: false,
       },
       weekendOpening: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
+        allowNull: false,
       },
       weekendClosing: {
-        type: Sequelize.TIME
-      },
-      createdAt: {
+        type: Sequelize.TIME,
         allowNull: false,
-        type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Shedules');
-  }
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Schedules');
+  },
 };
