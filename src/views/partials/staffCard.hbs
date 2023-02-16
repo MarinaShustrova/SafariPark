@@ -4,10 +4,10 @@
     <p class="card-title">{{email}}</p>
     <div class="d-flex justify-content-center flex-column">
       <button type="button" class="m-1 p-1 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editStaffForm">
-          Редактирование
+          Edit
       </button>
       <button type="button" class="m-1 p-1 btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteStaffForm">
-          Удалить
+          Delete
       </button>
     </div>
   </div>
@@ -27,18 +27,18 @@
             <input type="email" name="email" class="form-control" value="{{email}}">
           </div>
           <div class="mb-3">
-            <label class="form-label">Имя</label>
+            <label class="form-label">Name</label>
             <input type="text" name="firstName" class="form-control" value="{{firstName}}">
           </div>
           <div class="mb-3">
-            <label class="form-label">Фамилия</label>
+            <label class="form-label">Surname</label>
             <input type="text" name="lastName" class="form-control" value="{{lastName}}">
           </div>
           <div class="mb-3">
-            <label class="form-label">Пароль</label>
+            <label class="form-label">Password</label>
             <input type="password" name="password" class="form-control">
           </div>
-          <button type="submit" class="btn btn-primary">Подтвердить</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -55,9 +55,9 @@
       <div class="modal-body">
         <form action="/staff/{{id}}" class='deleteStaffForm'>
           <p>
-             Вы уверены что хотите удалить сотрудника?
+            Are you sure?
           </p>
-          <button type="submit" class="btn btn-secondary">Подтвердить</button>
+          <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
       </div>
     </div>

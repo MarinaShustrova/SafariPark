@@ -16,13 +16,13 @@
           {{#if admin}} 
               <div class="d-flex flex-wrap">
                 <button type="button" class="mx-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editAnimalForm">
-                    Редактировать
+                    Edit
                 </button>
                 <button type="button" class="mx-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deleteAnimalForm">
-                    Удалить
+                    Delete
                 </button>
                 <button type="button" class="mx-2 btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addPhotoForm">
-                    Добавить фото в галерею
+                    Add photo
                 </button>
                 
               </div>
@@ -37,13 +37,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Редактировать</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" method="PUT" class="m-2 editAnimalForm">
                 <div class="mb-3">
-                  <label class="form-label">Название</label>
+                  <label class="form-label">Name</label>
                   <input value="{{animal.name}}" name="name" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
@@ -52,10 +52,10 @@
                 <input name="dataType" type="hidden" class="form-control" value='animals'>
                 <input name="animalId" type="hidden" class="form-control" value={{animal.id}}>
                 <div class="mb-3">
-                  <label class="form-label">Фото карточки</label>
+                  <label class="form-label">Pics</label>
                   <input id="image" name="image" type="file" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-secondary">Подтвердить</button>
+                <button type="submit" class="btn btn-secondary">Submit</button>
                 </form>
       </div>
     </div>
@@ -66,13 +66,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Удалить</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/categories/{{animal.categoryId}}/animals/{{animal.id}}" class="m-2 deleteAnimalForm">
-                  <p>Вы уверены что хотите удалить карточку: {{animal.name}}</p>
-                  <button type="submit" class="btn btn-secondary">Подтвердить</button>
+                  <p>are you really want to delete?{{animal.name}}</p>
+                  <button type="submit" class="btn btn-secondary">Submit</button>
           </form>
       </div>
     </div>
@@ -83,7 +83,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Добавить фото в галерею</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add pics into galerry</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -91,10 +91,10 @@
           <input type='hidden' name='dataType' class='form-control' value='animals'>
           <input name="animalId" type="hidden" class="form-control" value={{animal.id}}>
             <div class="mb-3">
-              <label class="form-label">Фото</label>
+              <label class="form-label">Photo</label>
               <input id="image" required name="image" type="file" class="form-control">
             </div>
-            <button type="submit" class="btn btn-secondary">Подтвердить</button>
+            <button type="submit" class="btn btn-secondary">Galerry</button>
          </form>
       </div>
     </div>
@@ -103,7 +103,7 @@
 
 {{#if animalPhotos}}
 <div class="animal_carousel">
-    <h2 class="inner__container-title">Галерея</h2>
+    <h2 class="inner__container-title">Galerry</h2>
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         {{#each animalPhotos}}

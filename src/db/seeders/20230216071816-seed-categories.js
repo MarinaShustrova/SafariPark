@@ -4,19 +4,19 @@ module.exports = {
       'Categories',
       [
         {
-          title: 'Млекопитающие',
+          title: 'Leopards',
         },
         {
-          title: 'Птицы',
+          title: 'Buffaloes',
         },
         {
-          title: 'Пресмыкающиеся',
+          title: 'Rhinoes',
         },
         {
-          title: 'Земноводный',
+          title: 'Elephants',
         },
         {
-          title: 'Рыбы',
+          title: 'Lions',
         },
       ],
       {},

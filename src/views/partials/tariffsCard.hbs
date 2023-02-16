@@ -26,33 +26,33 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Редактировать тариф</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit tariff</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="editTariff" action="/tariffs/{{id}}">
           <input type='hidden' name='dataType' class='form-control' value='tariffs'>
           <div class="mb-3">
-            <label class="form-label">Название</label>
+            <label class="form-label">Name</label>
             <input name="title" class="form-control" value="{{title}}">
           </div>
       <div class="mb-3">
-        <label class="form-label">Описание</label>
+        <label class="form-label">Description</label>
         <input name="description" class="form-control" value="{{description}}">
       </div>
       <div class="mb-3">
-        <label class="form-label">Условия</label>
+        <label class="form-label">Conditions</label>
         <input name="condition" class="form-control" value="{{condition}}">
       </div>
       <div class="mb-3">
-        <label class="form-label">Цена</label>
+        <label class="form-label">Price</label>
         <input name="price" type="number" class="form-control" value="{{price}}">
       </div>
       <div class="mb-3">
-        <label class="form-label">Фото карточки</label>
+        <label class="form-label">Pics</label>
         <input name="image" type="file" class="form-control">
       </div>
-      <button type="submit" class="btn btn-secondary">Подтвердить</button>
+      <button type="submit" class="btn btn-secondary">Submit</button>
   </form>
       </div>
     </div>
@@ -63,13 +63,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Редактировать тариф</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit tariff</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="/tariffs/{{id}}" class="deleteTariff" class="d-flex flex-column justify-content-center">
-          <div>Вы уверены что хотите удалить тариф: {{title}}</div>
-          <button type="submit" class="btn btn-secondary">Подтвердить</button>
+          <div>You are really want to delete?: {{title}}</div>
+          <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
       </div>
     </div>

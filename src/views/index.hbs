@@ -1,14 +1,12 @@
-div class="intro">
+<div class="intro">
   <div class="intro__inner">
-    <h2 class="intro__title">Название</h2>
+    <h2 class="intro__title">Name</h2>
     <div class="intro__info">
-      <p>г.Москва ул.Зоопарковая 5</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit sequi natus laboriosam aperiam itaque laborum.
-        Veritatis
-        vero, autem dolore maiores voluptatem distinctio, neque deserunt</p>
-      <ul class="intro__schedule schedule">Режим работы
+      <p>R356, Sutherland Road, Breede River</p>
+      <p>Inverdoorn Big 5 Private Game Reserve is just under 2.5 hours drive from Cape Town, in the malaria-free Ceres Karoo.</p>
+      <ul class="intro__schedule schedule">Works time
         <li class="schedule__days">
-          <span class="schedule__day">Будни</span>
+          <span class="schedule__day">Weekdays</span>
 
           <span class="schedule__day-opening">
             {{schedule.weekdaysOpening}}
@@ -17,7 +15,7 @@ div class="intro">
           </span>
         </li>
         <li class="schedule__days">
-          <span class="schedule__day schedule__day_weekend">Выходные</span>
+          <span class="schedule__day schedule__day_weekend">Weekends</span>
 
           <span class="schedule__day-opening">
             {{schedule.weekendOpening}}
@@ -32,20 +30,20 @@ div class="intro">
 
 <div class="news">
   <div class="px-5 inner__container">
-    <h2 class="inner__container-title">Новости</h2>
+    <h2 class="inner__container-title">News</h2>
         {{!-- Each card ... --}}
         {{#each news}}
           {{> newsCard}} 
         {{/each}}
         <div class="text-right d-block">
-          <a href="/news" class="link-warning">Смотреть все новости зоопарка</a>
+          <a href="/news" class="link-warning">Click here for some News</a>
         </div>
   </div>
 </div>
 
 <div class="galery">
   <div class="inner__container--wide">
-    <h2 class="inner__container-title text-center">Наши Животные</h2>
+    <h2 class="inner__container-title text-center">Our Animals</h2>
     <div class="galery-wrapper">
       {{#each images}}
         {{> galeryCard}}
@@ -56,7 +54,7 @@ div class="intro">
 
 <div id="tariffs">
   <div class="px-5 inner__container">
-    <h2 class="inner__container-title">Taрифы</h2>
+    <h2 class="inner__container-title">Prices</h2>
     <div class="d-flex flex-wrap">
       {{!-- Each card ... --}}
       {{#each tariffs}}
@@ -68,17 +66,17 @@ div class="intro">
 
 <div id="contacts">
   <div class="px-5 inner__container--wide">
-    <h2 class="inner__container-title">Контакты</h2>
+    <h2 class="inner__container-title">Contacts</h2>
     <div class="contacts__inner">
       <div class="map">
         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A18d6f5366f4bf37ec218ac2183efa18dc9c7f1c38b1812a717e2415456eb5982&amp;source=constructor" width="400" height="400" frameborder="0"></iframe>
       </div>
       <div class="contacts__inner-info">
         <div class="info">
-          <p><a href="https://yandex.ru/maps/213/moscow/?ll=37.578525%2C55.761248&mode=poi&poi%5Bpoint%5D=37.578525%2C55.761248&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1110600521&z=17.97">г.Москва, ул.Зоопарковая 5</a></p> 
-          <p><a href="tel:+74951234567" target="_blank">+7 (495) 123-45-67</a></p>
-          <p><a href="tel:7495123456">12-23-45</a></p>
-          <p><a href="mailto:ask@htmlbook.ru">Задавайте вопросы по электронной почте</a></p> 
+          <p><a href="https://yandex.ru/maps/?ll=19.373929%2C-33.728739&mode=routes&rtext=-33.753125%2C19.263983~-33.922500%2C18.417600&rtt=auto&ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D110627948439&z=10.5">R356, Sutherland Road, Breede River</a></p> 
+          <p><a href="tel:+78568493003" target="_blank">+357 (34) 888-45-67</a></p>
+          <p><a href="tel:785678399">12-44-55</a></p>
+          <p><a href="mailto:ask@htmlbook.ru">For questions</a></p> 
         </div>
       </div>
     </div>
