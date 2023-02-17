@@ -8,26 +8,24 @@ const categoriesService = new CategoriesService();
 
 class AdminsController {
   async renderLoginPage(req, res) {
-    
-    // const admin = await adminsService.findAdminByEmail(email);
+    // const admin = await adminsService.findAdminByEmail({ email });
     res.render('admin/adminLogin');
   }
 
   async renderAdminPage(req, res) {
     let admins;
     try {
-      admins = await db.Admin.findAll({raw:true})
-    }
-    catch (error) {
+      admins = await db.Admin.findAll({ raw: true });
+    } catch (error) {
       const { message } = error;
       console.error(message);
     }
     // const admin = await adminsService.findAdminByEmail(email);
-    if(req.session.admin) {
+    if (req.session.admin) {
       res.render('admin/adminPage', { categories: req.categories, admin: req.session.admin, admins });
-      return
+      return;
     }
-    res.redirect('/admins/login')
+    res.redirect('/admins/login');
   }
 
   async loginAdmin(req, res) {
@@ -38,8 +36,8 @@ class AdminsController {
         req.session.admin = {
           name: admin.firstName,
           id: admin.id,
-          isSuperAdmin: admin.isSuperAdmin
-        }
+          isSuperAdmin: admin.isSuperAdmin,
+        };
       }
       res
         .status(200)
@@ -68,17 +66,17 @@ class AdminsController {
 
   async logout(req, res) {
     req.session.destroy((error) => {
-    if (error) {
-      console.log(error);
-    }
-    res
-      .clearCookie('user_sid')
-      .redirect('/');
+      if (error) {
+        console.log(error);
+      }
+      res
+        .clearCookie('user_sid')
+        .redirect('/');
     });
   }
 
   async redirectOnLogin(req, res) {
-    res.redirect('/admins/login')
+    res.redirect('/admins/login');
   }
 }
 

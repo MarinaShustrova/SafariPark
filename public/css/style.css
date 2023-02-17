@@ -34,7 +34,7 @@ ul {
 
 .intro {
   background-image: url('https://images.unsplash.com/photo-1586398761133-3eabe7298f0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
-  height: calc(100vh - 58px);
+  height: calc(100vh - 60px);
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;

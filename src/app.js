@@ -28,7 +28,7 @@ const newsRouter = require('./routes/news.router');
 const scheduleRouter = require('./routes/schedule.router');
 
 const chatRouter = require('./routes/chats.router');
-const staffRouter = require('./routes/staff.router')
+const staffRouter = require('./routes/staff.router');
 
 const app = express();
 app.use(session(sessionConfig));
