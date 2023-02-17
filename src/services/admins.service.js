@@ -16,7 +16,9 @@ class AdminsService {
     return admins;
   }
 
-  async createNewAdmin({ firstName, lastName, email, password, isSuperAdmin }) {
+  async createNewAdmin({
+    firstName, lastName, email, password, isSuperAdmin,
+  }) {
     let admin;
 
     try {
