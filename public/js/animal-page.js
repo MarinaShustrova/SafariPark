@@ -1,4 +1,4 @@
-ocument.addEventListener('submit', async (e) => {
+document.addEventListener('submit', async (e) => {
   if (e.target.matches('.editAnimalForm')) {
     e.preventDefault();
     const formData = new FormData(e.target);

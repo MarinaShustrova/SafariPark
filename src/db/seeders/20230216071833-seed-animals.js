@@ -133,7 +133,7 @@ module.exports = {
           name: 'Leopard',
           description: 'These nocturnal predators also stalk antelope, deer, and pigs by stealthy movements in the tall grass. When human settlements are present, leopards often attack dogs and, occasionally, people.',
           image:
-            'https://images.unsplash.com/photo-1602587557695-9fa83da489c8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2hhbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            'https://images.unsplash.com/photo-1544985361-b420d7a77043?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
           categoryId: '1',
         },
         {
