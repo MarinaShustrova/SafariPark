@@ -34,7 +34,7 @@ module.exports = {
           title: 'Family Lodge',
           description: 'Ideal for families / groups of travellers',
           condition: 'Please note that all lodge rooms have a unique and exciting layout that varies in configuration.',
-          price: '100',
+          price: '100000',
           image:
             'https://images.unsplash.com/photo-1621295070837-50fec3df9dff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
         },
