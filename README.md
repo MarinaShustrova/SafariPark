@@ -15,6 +15,7 @@
 
 - Фронтенд: Handlebars, Bootstrap, Multer
 - Бекенд: WebSockets, Node.js, Express, PostgreSQL, Sequelize ORM
+-Enjoy
 
 
 
